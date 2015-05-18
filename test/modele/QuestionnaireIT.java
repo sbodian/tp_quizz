@@ -25,6 +25,6 @@ public class QuestionnaireIT {
         expResult.getQuestionCollection().add(question);
         Questionnaire result = Questionnaire.getById(4);
         assertEquals(expResult, result);
+    
     }
-
 }

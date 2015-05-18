@@ -10,8 +10,7 @@
         <h1>Bienvenue sur le Quizz du siècle</h1>
         <p>Début ${question.libelle}</p>
     </body>
-    <div style="position:absolute;left:500px;top:170px">
-    <ul style="list-style-type:disc">
+    <ul>
         <li>Le niveau 1 du Quizz contient 10 questions à choix multiple</li>
         <li>La durée totale du Quizz est 10 Minutes</li>
         <li>Lisez attentivement les questions avant de répondre</li>
@@ -19,7 +18,6 @@
         <li>Bonne chance pour le test</li>
     </ul>
         <br  />
-    </div>
     <div  style="position:absolute;left:600px;top:350px">
         <button onclick="location.href='${pageContext.request.contextPath}/quizz'">Commencez le Quizz</button>
 </div>

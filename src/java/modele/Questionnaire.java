@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Collection;
+import java.util.*;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +23,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import modele.Question;
 
 /**
  *
@@ -46,7 +47,7 @@ public class Questionnaire implements Serializable {
     @Column(name = "libelle")
     private String libelle;
     @OneToMany(mappedBy = "idQuestionnaire")
-    private Collection<Question> questionCollection;
+    private ArrayList al = new ArrayList();
 
     public Questionnaire() {
     }
@@ -58,6 +59,7 @@ public class Questionnaire implements Serializable {
     public Questionnaire(Integer id, String libelle) {
         this.id = id;
         this.libelle = libelle;
+        //this.questionCollection = questionCollection;
     }
 
     public Integer getId() {
@@ -75,6 +77,7 @@ public class Questionnaire implements Serializable {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
+
     
     public static Questionnaire getById(int id) throws SQLException{
         Questionnaire result = null;
@@ -85,7 +88,8 @@ public class Questionnaire implements Serializable {
         if (rs.next()) {
             result = new Questionnaire(
                     rs.getInt("id"),
-                    rs.getString("question")
+                    rs.getString("libelle")
+                    
                     
                     
             );
@@ -96,11 +100,11 @@ public class Questionnaire implements Serializable {
 
     @XmlTransient
     public Collection<Question> getQuestionCollection() {
-        return questionCollection;
+        return al;
     }
 
-    public void setQuestionCollection(Collection<Question> questionCollection) {
-        this.questionCollection = questionCollection;
+    public void setQuestionCollection(ArrayList<Question> questionCollection) {
+        this.al = questionCollection;
     }
 
     @Override

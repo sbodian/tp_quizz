@@ -86,10 +86,8 @@ BEGIN
     (87, 'Quel sportif était surnommé The Juice ?', 3),
     (88, 'Quel sportif était surnommé Kid Dynamite ?', 3),
     (89, 'Quel sportif était surnommé Kaiser Franz ?', 3),
-    (90, 'Quel sportif était surnommé le Kid de Las Vegas ?', 3),
-    (91, 'Quel basketteur était surnommé Le Facteur ?', 3),
-    (92, 'Quel sportif était surnommé le Kid de Las Vegas ?', 4),
-    (93, 'Quel basketteur était surnommé Le Facteur ?', 4);
+    (90, 'Quel sportif était surnommé le Kid de Las Vegas ?', 4),
+    (91, 'Quel basketteur était surnommé Le Facteur ?', 4);
 
     INSERT INTO `reponse` (`id`, `reponse`, `id_question`) VALUES
     (11, 'Guy de Maupassant', 61),
