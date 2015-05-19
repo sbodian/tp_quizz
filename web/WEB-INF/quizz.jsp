@@ -18,7 +18,7 @@
         <li>Bonne chance pour le test</li>
     </ul>
     <ol>
-        <c:forEach items="${questionnaire.questionCollection}" var="question">
+        <c:forEach items="${questionnaire.questions}" var="question">
             <li>${question.question}</li>
         </c:forEach>
     </ol>
