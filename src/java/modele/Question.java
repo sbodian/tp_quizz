@@ -6,6 +6,10 @@
 package modele;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -62,6 +66,7 @@ public class Question implements Serializable {
     public Question(Integer id, String question) {
         this.id = id;
         this.question = question;
+       
     }
 
     public Integer getId() {
@@ -104,6 +109,26 @@ public class Question implements Serializable {
     public void setIdRep(Reponse idRep) {
         this.idRep = idRep;
     }
+    public static Question getById(int id) throws SQLException{
+        Question result = null;
+        Connection cnx = Database.getConnection();
+        Statement ordre = cnx.createStatement();
+        String sql = "SELECT * from question where id=" + id;
+        ResultSet rs = ordre.executeQuery(sql);
+        if (rs.next()) {
+            result = new Question(
+                    rs.getInt("id"),
+                    rs.getString("question")
+                    
+                    
+                    
+                    
+                    
+            );
+        }
+        cnx.close();
+        return result;
+    }
 
     @Override
     public int hashCode() {
@@ -127,7 +152,7 @@ public class Question implements Serializable {
 
     @Override
     public String toString() {
-        return "modele.Question[ id=" + id + " ]";
+        return id + " : " + question;
     }
     
 }

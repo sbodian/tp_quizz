@@ -12,18 +12,19 @@
         <servlet-name>GestionServlet</servlet-name>
         <servlet-class>servlet.GestionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Connexion</servlet-name>
+        <servlet-class>servlet.Connexion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>QuizzServlet</servlet-name>
         <url-pattern>/QuizzServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>QuestionServlet</servlet-name>
-        <url-pattern>/QuestionServlet</url-pattern>
+        <servlet-name>Connexion</servlet-name>
+        <url-pattern>/Connexion</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GestionServlet</servlet-name>
-        <url-pattern>/GestionServlet</url-pattern>
-    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

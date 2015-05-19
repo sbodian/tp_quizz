@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Bienvenue sur le Quizz du siècle</h1>
-        <p>Début ${questionnaire.libelle}</p>
+        <p>Début ${questionnaire.libelle} (quiz n° ${param["idQuiz"]})</p>
     </body>
     <ul style="list-style-type:disc">
         <li>Le niveau 1 du Quizz contient 10 questions à choix multiple</li>

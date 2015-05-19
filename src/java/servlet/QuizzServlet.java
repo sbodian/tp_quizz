@@ -29,13 +29,19 @@ public class QuizzServlet extends HttpServlet {
         throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String vue = "/WEB-INF/quizz.jsp";
-        String pQuestion = request.getParameter("question");
-        int id = Integer.parseInt(pQuestion);
+        String pQuestion = request.getParameter("idQuiz");
+        
         try {
+            int id = Integer.parseInt(pQuestion);
             Questionnaire questionnaire = Questionnaire.getById(id);
             request.setAttribute("questionnaire", questionnaire);
-        } catch (SQLException ex) {
-            Logger.getLogger(QuizzServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (SQLException ex) {
+            request.setAttribute("message", "Problème de base de données. Code : " + ex.getErrorCode());
+            vue = "/WEB-INF/message.jsp";
+        } catch (NumberFormatException exc) {
+            if (request.getParameter("num") != null) {
+                request.setAttribute("msgNum", " doit être entier");
+            }
         }
         
         request.getRequestDispatcher(vue).forward(request, response);
