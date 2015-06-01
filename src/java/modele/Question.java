@@ -10,7 +10,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,25 +50,23 @@ public class Question implements Serializable {
     @Column(name = "question")
     private String question;
     @OneToMany(mappedBy = "idQuestion")
-    private Collection<Reponse> reponseCollection;
+    private Collection<Option> options;
     @JoinColumn(name = "id_questionnaire", referencedColumnName = "id")
     @ManyToOne
     private Questionnaire idQuestionnaire;
     @JoinColumn(name = "id_rep", referencedColumnName = "id")
     @ManyToOne
     private Reponse idRep;
+    
+   
 
     public Question() {
-    }
-
-    public Question(Integer id) {
-        this.id = id;
     }
 
     public Question(Integer id, String question) {
         this.id = id;
         this.question = question;
-       
+        options = new ArrayList<Option>();
     }
 
     public Integer getId() {
@@ -86,12 +86,12 @@ public class Question implements Serializable {
     }
     
     @XmlTransient
-    public Collection<Reponse> getReponseCollection() {
-        return reponseCollection;
+    public Collection<Option> getOptions() {
+        return options;
     }
 
-    public void setReponseCollection(Collection<Reponse> reponseCollection) {
-        this.reponseCollection = reponseCollection;
+    public void setOptions(Collection<Option> options) {
+        this.options = options;
     }
 
     public Questionnaire getIdQuestionnaire() {
@@ -109,50 +109,51 @@ public class Question implements Serializable {
     public void setIdRep(Reponse idRep) {
         this.idRep = idRep;
     }
-    public static Question getById(int id) throws SQLException{
-        Question result = null;
-        Connection cnx = Database.getConnection();
-        Statement ordre = cnx.createStatement();
-        String sql = "SELECT * from question where id=" + id;
-        ResultSet rs = ordre.executeQuery(sql);
-        if (rs.next()) {
-            result = new Question(
-                    rs.getInt("id"),
-                    rs.getString("question")
-                    
-                    
-                    
-                    
-                    
-            );
-        }
-        cnx.close();
-        return result;
-    }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.question);
+        hash = 37 * hash + Objects.hashCode(this.options);
+        hash = 37 * hash + Objects.hashCode(this.idQuestionnaire);
+        hash = 37 * hash + Objects.hashCode(this.idRep);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Question)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Question other = (Question) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Question other = (Question) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.question, other.question)) {
+            return false;
+        }
+        if (!Objects.equals(this.options, other.options)) {
+            return false;
+        }
+        if (!Objects.equals(this.idQuestionnaire, other.idQuestionnaire)) {
+            return false;
+        }
+        if (!Objects.equals(this.idRep, other.idRep)) {
             return false;
         }
         return true;
     }
+    
+   
 
     @Override
     public String toString() {
         return id + " : " + question;
     }
-    
+
+   
 }

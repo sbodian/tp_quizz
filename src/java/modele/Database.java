@@ -34,7 +34,7 @@ public class Database {
 	  protected static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
 	  protected static final String USER = "root";
 	  protected static final String PASSWORD = "";
-	  protected static final String DB_NAME = "quizsql";
+	  protected static final String DB_NAME = "quiz";
 	  protected static final String URL = "jdbc:mysql://localhost/" + DB_NAME;
 
 	  public enum SortOrder {

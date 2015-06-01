@@ -46,7 +46,7 @@ BEGIN
     SET FOREIGN_KEY_CHECKS = 0;
     TRUNCATE TABLE questionnaire;
     TRUNCATE TABLE question;
-    TRUNCATE TABLE reponse;
+    TRUNCATE TABLE option;
     SET FOREIGN_KEY_CHECKS = 1;
 
     INSERT INTO `questionnaire` (`id`, `libelle`) VALUES
@@ -89,37 +89,82 @@ BEGIN
     (90, 'Quel sportif était surnommé le Kid de Las Vegas ?', 4),
     (91, 'Quel basketteur était surnommé Le Facteur ?', 4);
 
-    INSERT INTO `reponse` (`id`, `reponse`, `id_question`) VALUES
-    (11, 'Guy de Maupassant', 61),
-    (12, 'Jean-Paul Ier', 62),
-    (13, 'Claudia Schiffer', 63),
-    (14, 'L''Albanie', 64),
-    (15, 'Peignez', 65),
-    (16, 'The Doors', 66),
-    (17, 'Vincent Cassel', 67),
-    (18, 'La Méduse', 68),
-    (19, 'Paul Simon', 69),
-    (20, 'Un oiseau', 70),
-    (21, 'Le Washington Post', 72),
-    (22, 'Laurent Fabius', 73),
-    (23, 'Le Radeau de la Méduse', 74),
-    (24, 'Dr Fuentes', 75),
-    (25, 'Marithé et François Girbaud', 76),
-    (26, 'Au Sofitel', 77),
-    (27, 'Ferdinand de Lesseps', 78),
-    (28, 'Valéry Giscard d’Estaing', 79),
-    (29, 'Afrique du Sud', 80),
-    (30, 'Servier', 81),
-    (31, 'Boris Becker', 82),
-    (32, 'Eddy Merx', 83),
-    (33, 'Éric Cantona', 84),
-    (34, 'Gustavo Kuerten', 85),
-    (35, 'Laurent Fignon', 86),
-    (36, 'O.J. Simpson', 87),
-    (37, 'Mike Tyson', 88),
-    (38, 'Franz Beckenbauer', 89),
-    (39, 'André Agassi', 90),
-    (40, 'Karl Malone', 91);
+    --
+-- Contenu de la table `option`
+--
+
+INSERT INTO `option` (`id`, `libelle`, `correct`, `idquestion`) VALUES
+(1, 'Victor Hugo', 0, 61),
+(2, 'Honore de Balzac', 0, 61),
+(3, 'Voltaire', 0, 61),
+(4, 'Saint Pierre', 0, 62),
+(5, 'Saint sixte 1er', 0, 62),
+(6, 'Saint Denys', 0, 62),
+(7, 'Bonnie Tayler', 0, 63),
+(8, 'Mylene Farmer', 0, 63),
+(9, 'Donna Summer', 0, 63),
+(10, 'Tchad', 0, 64),
+(11, 'Russie', 0, 64),
+(12, 'Yougoslavie', 0, 64),
+(13, 'Peindrez', 0, 65),
+(14, 'Peindriez', 0, 65),
+(15, 'Paintrez', 0, 65),
+(16, 'Aerosmith', 0, 66),
+(17, 'R.E.M', 0, 66),
+(18, 'Buju Banton', 0, 66),
+(19, 'Monica', 0, 67),
+(20, 'Toi', 0, 67),
+(21, 'Le cheval blanc d Henry IV', 0, 67),
+(22, 'Le Goeland', 0, 68),
+(23, 'Le Rafiot', 0, 68),
+(24, 'La chouette', 0, 68),
+(25, 'Eric Clapton', 0, 69),
+(26, 'George Benson', 0, 69),
+(27, 'Youssou Ndour', 0, 69),
+(28, 'Une fleure', 0, 70),
+(29, 'Un legume', 0, 70),
+(30, 'Une methode abstract', 0, 70),
+(31, 'Le New York Times', 0, 72),
+(32, 'Le figaro', 0, 72),
+(33, 'L''Humanite', 0, 72),
+(34, 'Apparu Benoist', 0, 73),
+(35, 'Baumel Laurent', 0, 73),
+(36, 'Kert Christian', 0, 73),
+(37, 'Guy de Maupassant', 1, 61),
+(38, 'Jean-Paul Ier', 1, 62),
+(39, 'Claudia Schiffer', 1, 63),
+(40, 'L''Albanie', 1, 64),
+(41, 'Peignez', 1, 65),
+(42, 'The Doors', 1, 66),
+(43, 'Vincent Cassel', 1, 67),
+(44, 'La Méduse', 1, 68),
+(45, 'Paul Simon', 1, 69),
+(46, 'Un oiseau', 1, 70),
+(47, 'Le Washington Post', 1, 72),
+(48, 'Laurent Fabius', 1, 73),
+(49, 'Le Radeau de la Méduse', 1, 74),
+(50, 'Dr Fuentes', 1, 75),
+(51, 'Marithé et François Girbaud', 1, 76),
+(52, 'Au Sofitel', 1, 77),
+(53, 'Ferdinand de Lesseps', 1, 78),
+(54, 'Valéry Giscard d’Estaing', 1, 79),
+(55, 'Afrique du Sud', 1, 80),
+(56, 'Servier', 1, 81),
+(57, 'Boris Becker', 1, 82),
+(58, 'Eddy Merx', 1, 83),
+(59, 'Éric Cantona', 1, 84),
+(60, 'Gustavo Kuerten', 1, 85),
+(61, 'Laurent Fignon', 1, 86),
+(62, 'O.J. Simpson', 1, 87),
+(63, 'Mike Tyson', 1, 88),
+(64, 'Franz Beckenbauer', 1, 89),
+(65, 'André Agassis', 1, 90),
+(66, 'Karl Malone', 1, 91);
+
+-- --------------------------------------------------------
+
+
+
 END
 $$
 

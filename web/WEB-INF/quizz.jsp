@@ -17,9 +17,18 @@
         <li>Vous pouvez changer vos réponses avant de valider</li>
         <li>Bonne chance pour le test</li>
     </ul>
-    <ol>
-        <c:forEach items="${questionnaire.questions}" var="question">
-            <li>${question.question}</li>
-        </c:forEach>
-    </ol>
+    <form action="" method="post">
+        <ol>
+            <c:forEach items="${questionnaire.questionCollection}" var="question">
+                <li>${question.question}
+                    <c:forEach items="${question.options}" var="choix">
+                        <input type="radio" name="${question.id}"
+                               value="${choix.id}"/> ${choix.libelle}
+                        <br />
+                    </c:forEach>
+                </li>
+            </c:forEach>
+        </ol>
+        <button type="submit">Valider</button>
+    </form>
 </html>

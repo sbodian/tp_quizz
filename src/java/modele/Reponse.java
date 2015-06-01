@@ -51,6 +51,12 @@ public class Reponse implements Serializable {
     public Reponse() {
     }
 
+    public Reponse(Integer id, String reponse) {
+        this.id = id;
+        this.reponse = reponse;
+    }
+    
+
     public Reponse(Integer id) {
         this.id = id;
     }
